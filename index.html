@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cognitive Tasks</title>
+  <script src="jquery-mobile/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script>
+    $(document).bind('mobileinit',function(){
+      $.mobile.pushStateEnabled = false;
+    });
+  </script>
+  <script src="jquery-mobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+  <link href="jquery-mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<style type="text/css">
+.listCont {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 50%;
+    position: absolute;
+    top: 40%; 
+    left: 10%; 
+    width: 80%
+}
+</style>
+
+<body>
+  <div data-role="page" id="home" data-fullscreen="true">
+    <div data-role="header" data-position="fixed" data-theme="a">
+      <!-- <a href="index.html" rel="external" id="back" data-icon="forward" >回上頁</a> -->
+      <!-- <a href="index.html" rel="external" id="home" data-icon="home"  class="ui-btn-right" >首頁</a> -->
+      <h1 style="font-size: 2em">臺大認知測驗</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+      <h2 style="position: absolute; top: 18%; left: 10%">搜尋</h2>
+      <form style="position: absolute; top: 25%; left: 10%; width: 80%" class="ui-filterable">
+        <input style="font-size: 1.5em" id="myFilter" data-type="search" placeholder="請輸入測驗名稱">
+      </form>
+      <div class="listCont" style="">
+        <ul data-role="listview" data-filter="true" data-input="#myFilter" data-inset="true" data-dividertheme="e" id="taskField">
+      </div>
+    </div>
+  </div>
+</body>
+  <script type="text/javascript">
+    var taskUrl = [
+    "task_SRT_CRT",
+    // "task_SRT_CRT_Demo",
+    "task_Color_Trail_Test",
+    // "task_Color_Trail_Test_Demo",
+    "task_Inhibition_of_Return",
+    // "task_Inhibition_of_Return_Demo",
+    "task_Stop_Signal_Task_pre",
+    // "task_Stop_Signal_Task_pre_Demo",
+    "task_Running_Working_Memory",
+    "task_Delayed_Matching_to_Sample",
+    "task_Associative_Memory",
+    "task_Figure_Task",
+    "task_Delayed_Response_Task",
+    "task_Hearts_and_Flowers",
+    "task_Rotation_Span",
+    "task_Spatial_Working_Memory",
+    "task_Spatial_Delayed_Response_Task"
+    ]
+    var taskName = [
+    "單純反應與選擇反應作業（SRT & CRT, Simple reaction time & Choice reaction time）",
+    // "單純反應與選擇反應作業 Demo（SRT & CRT, Simple reaction time & Choice reaction time）",
+    "路徑描繪測驗（CTT, Color trail test）",
+    // "路徑描繪測驗 Demo（CTT, Color trail test）",
+    "迴向抑制作業（IOR, Inhibition of return）",
+    // "迴向抑制作業 Demo（IOR, Inhibition of return）",
+    "停止信號作業（Stop signal task）",
+    // "停止信號作業 Demo（Stop signal task）",
+    "工作記憶更新作業（Running working memory）",
+    "樣本延遲配對（Delayed matching to sample）",
+    "關聯記憶作業（Associative Memory）",
+    "圖形判斷轉換作業（Figure task）",
+    "延遲反應作業（Delayed response task）",
+    "心花作業（Hearts & flowers）",
+    "旋轉廣度作業（Rotation span task）",
+    "空間工作記憶（Spatial working memory）",
+    "空間延遲反應作業（Spatial delayed-response task）"
+    ]
+
+    for (var i = 0; i < taskUrl.length; i++) {
+      $("#taskField").append("<li><a style='font-size: 1.5em' onclick=redirect('"+taskUrl[i]+"') rel='external'>"+taskName[i]+"</a></li></ul>")
+    }
+    function redirect(url) {
+      localStorage.setItem("RedirectUrl", url)
+      location.href = 'setting_All.html'
+    }
+
+  </script>
+</html>
